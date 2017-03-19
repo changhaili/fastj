@@ -1,0 +1,195 @@
+/**
+define Filter in java 
+
+package net.fastj;
+public interface Filter<T> {
+	boolean isSatisfied(T obj);
+}
+*/
+
+
+var filter = [net.fastj.Filter](s)=> s.contains("hai");
+
+println(filter("lichanghai"));
+println(filter.isSatisfied("hello world"));
+
+
+class Filter2{
+
+	def dispatch(dispatcher){		
+		println(dispatcher);
+		
+		if(dispatcher.isInvoke()){
+			return true;
+		}
+		return false;
+	}
+	
+	def isSatisfied( obj){
+		return obj.contains("li");
+	}	
+}
+
+import("net.fastj.Filter");
+
+var filter = createProxy(new Filter2(), Filter.class);
+println("filter.isSatisfied: " +filter.isSatisfied("lichanghai"));
+
+
+jLabel: for(j = 0;j<1;j++){
+	iLabel: for(var i=0;i<10;i++) {
+		println("j=" + j + ", i=" + i);
+		if(i >4) break jLabel;
+		
+	}
+}
+
+def loopFun(){
+
+	for(var i=0;i<10;i++)
+		yield i*20;
+}
+
+println(loopFun());
+
+
+class Int{
+	var value = 0;	
+	
+	def Int(){
+	}
+	
+	def Int(v){
+		this.value = v;
+	}
+	def + (v){
+		return new Int(this.value +v);
+	}
+	
+	def toString(){
+		return this.value;
+	}
+	
+	def ()(k){
+		return k+10;
+	}
+	
+	def [](k){
+		return k+11;
+	}
+}
+
+var xx = new Int(10);
+
+println(new Int(40) + 20);
+println("--------------"+xx(20));
+println("--------------"+xx[20]);
+println(new String("lichanghai"));
+
+
+var x = [java.util.concurrent.Callable.call]()=> 10;
+println(x());
+
+
+def fun(a, v0, v1){
+	return a(v0, v1);
+}
+
+var k = (a,b) => a+b;
+println(fun((a,b) => a+b, 123, 234));
+
+
+// class
+
+class S0{
+	var s0=20;
+	
+	def S0(){
+		this.s0 = 100000000;
+	}
+	
+	def add(d){
+		return d + this.s0;
+	}
+}
+
+println(new S0().add(10) );
+
+class S1{
+	var s1=11;
+	
+	def sub(d){
+		return d - this.s1;
+	}
+}
+
+println(new S1().sub(10) );
+
+class C0 : S0, S1 {
+
+	def C0(x){
+		this.s1 = x;
+	}
+}
+
+var c0 = new C0(2000);
+
+println(c0.add(c0.sub(20)));
+
+
+println( __LINE__ );
+
+println(toStr("25")+20);
+
+for(var i=0;i<1;i++){	
+	
+	println( @'@Operators(ops = { "()" })');	
+	
+	var code = "public Object fun(";
+
+	for(var j=0;j<i;j++){
+	
+		if(j!=0){
+			code = code + " , ";
+		}		
+		code = code + "Object obj"+j;
+	}
+	
+	println(code +"){");	
+	
+	code = "return this.invoke(";
+	for(var j=0;j<i;j++){
+	
+		if(j!=0){
+			code = code + " , ";
+		}		
+		code = code + "obj"+j;
+	}
+	
+	println(code + ");");
+	println("}");
+	
+	println();
+}
+
+println(true);
+println(String.class);
+
+println(now());
+
+println("----------------------------------------------------------------------------");
+println("----------------------------------------------------------------------------");
+
+if(defined(__FILE__))
+{
+	var count=0;
+	for(var line : readfile(__FILE__)){
+	  println(line);
+	  
+	  if( (count++) > 10){
+		break;
+	  }
+	}
+}
+
+

@@ -1,0 +1,14 @@
+
+重新整理栈帧处理逻辑，当前在Java回调Fastj后，有时栈会丢失
+
+尝试使用invokedynamic
+//修复lambda表达式中的变量空间的BUG
+//解决break, continue只能跳出当前循环的问题，
+//Lambda实现Java接口，返回值不能是基本类型的BUG
+
+
+// 以后的排期
+
+1. 实现yield关键字
+2. 看看怎么实现一个多线程模型
+3. 实现ExpressionIntent
